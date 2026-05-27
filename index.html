@@ -232,13 +232,13 @@ nav {
 /* ──  CHIBI CHARACTER SCENE ── */
 .chibi-section {
   text-align: center;
-  margin: 8px 0 16px;
-  padding: 0 8px;
+  margin: 0 0 8px;
+  padding: 0;
 }
 .chibi-art {
   max-width: 100%;
   height: auto;
-  width: 520px;
+  width: 680px;
   image-rendering: pixelated;
   display: inline-block;
   vertical-align: middle;
@@ -599,7 +599,6 @@ footer::before {
   border: 2px solid var(--soil);
   box-shadow: 3px 3px 0 var(--shadow);
   text-decoration: none;
-  font-size: 20px;
   transition: all 0.2s;
 }
 .social-links a:hover {
@@ -607,6 +606,14 @@ footer::before {
   border-color: var(--soil);
   transform: translate(-2px, -2px);
   box-shadow: 5px 5px 0 var(--shadow);
+}
+.social-links a:hover .soc-icon {
+  filter: brightness(0) invert(1);
+}
+.soc-icon {
+  width: 22px;
+  height: 22px;
+  display: block;
 }
 footer .footer-text {
   font-family: 'Press Start 2P', monospace;
@@ -923,11 +930,10 @@ section { padding: 40px 0; }
   <div class="container">
     <div class="section-title" style="justify-content:center"><span class="emoji">📬</span> Cari Aku</div>
     <div class="social-links">
-      <a href="#" title="GitHub">🐙</a>
-      <a href="#" title="LinkedIn">💼</a>
-      <a href="#" title="Instagram">📸</a>
-      <a href="#" title="Email">✉️</a>
-      <a href="#" title="Telegram">✈️</a>
+      <a href="https://github.com/DichaPutra" title="GitHub" target="_blank" rel="noopener"><img src="https://cdn.simpleicons.org/github/5c3a1e" alt="GitHub" class="soc-icon"></a>
+      <a href="https://id.linkedin.com/in/dichaputra" title="LinkedIn" target="_blank" rel="noopener"><img src="https://cdn.simpleicons.org/linkedin/5c3a1e" alt="LinkedIn" class="soc-icon"></a>
+      <a href="https://www.instagram.com/dichaputra/" title="Instagram" target="_blank" rel="noopener"><img src="https://cdn.simpleicons.org/instagram/5c3a1e" alt="Instagram" class="soc-icon"></a>
+      <a href="mailto:arwindra23@gmail.com" title="Email"><img src="https://cdn.simpleicons.org/gmail/5c3a1e" alt="Email" class="soc-icon"></a>
     </div>
     <div class="footer-text">
       🏠 dichaputra.sbs — SobatS © 2026<br>
