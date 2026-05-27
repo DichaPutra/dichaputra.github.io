@@ -228,6 +228,21 @@ nav {
   text-align: center;
   margin-top: 16px;
 }
+
+/* ──  CHIBI CHARACTER SCENE ── */
+.chibi-section {
+  text-align: center;
+  margin: 8px 0 16px;
+  padding: 0 8px;
+}
+.chibi-art {
+  max-width: 100%;
+  height: auto;
+  width: 520px;
+  image-rendering: pixelated;
+  display: inline-block;
+  vertical-align: middle;
+}
 .hero-avatar {
   width: 120px; height: 120px;
   margin: 0 auto 16px;
@@ -698,12 +713,13 @@ section { padding: 40px 0; }
       </div>
     </div>
 
-    <!-- Avatar & Title -->
+    <!-- Chibi Character Scene (transparent) -->
+    <div class="chibi-section pixel-fade-in">
+      <img src="avatar_transparent.png" alt="Dicha at work" class="chibi-art" loading="eager">
+    </div>
+
+    <!-- Title & Tagline -->
     <div class="hero-content pixel-fade-in">
-      <div class="hero-avatar">
-        <img src="avatar.png" alt="Dicha Putra" class="pixel-avatar" loading="eager">
-        <span class="sparkle">✦</span>
-      </div>
       <h1>Halo, <span class="highlight">Sobat</span>!</h1>
       <div class="tagline">✦ Developer · Problem Solver · Kadang Kucing ✦</div>
       <div class="divider">━━ ◆ ━━</div>
