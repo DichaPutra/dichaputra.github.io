@@ -160,7 +160,7 @@ nav {
 
 /* ──  VIDEO SECTION ── */
 .video-section {
-  margin-bottom: 4px;
+  margin-bottom: 0;
 }
 .video-section .video-label {
   font-family: 'Press Start 2P', monospace;
@@ -229,19 +229,71 @@ nav {
   margin-top: 16px;
 }
 
-/* ──  CHIBI CHARACTER SCENE ── */
-.chibi-section {
-  text-align: center;
-  margin: 0 0 8px;
-  padding: 0;
+/* ──  HERO ROW (avatar + text side by side) ── */
+.hero-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  margin-top: 4px;
 }
-.chibi-art {
-  max-width: 100%;
+.hero-avatar-wrap {
+  flex-shrink: 0;
+  width: 240px;
+}
+.hero-chibi {
+  width: 100%;
   height: auto;
-  width: 780px;
   image-rendering: pixelated;
-  display: inline-block;
-  vertical-align: middle;
+  display: block;
+}
+.hero-text {
+  flex: 1;
+  min-width: 0;
+}
+.hero-text h1 {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 22px;
+  color: var(--soil);
+  text-shadow: 3px 3px 0 var(--gold);
+  margin-bottom: 8px;
+  letter-spacing: 2px;
+}
+.hero-text h1 .highlight { color: var(--heart); text-shadow: 3px 3px 0 var(--gold); }
+.hero-text .tagline {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  color: var(--leaf);
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+.hero-text .divider {
+  text-align: left;
+  margin: 8px 0;
+  font-size: 10px;
+  color: var(--tan);
+  letter-spacing: 4px;
+}
+.hero-intro {
+  background: var(--cream);
+  border: var(--pixel-border) solid var(--soil);
+  box-shadow:
+    inset -3px -3px 0 var(--bark),
+    inset 3px 3px 0 var(--parchment),
+    4px 4px 0 var(--shadow);
+  padding: 16px;
+  font-size: 11px;
+  color: var(--soil);
+  line-height: 1.8;
+  text-align: left;
+}
+.hero-intro strong { color: var(--heart); }
+.hero-intro em { color: var(--leaf); font-style: normal; }
+.hero-intro .pixel-hr {
+  text-align: center;
+  margin: 8px 0;
+  color: var(--tan);
+  font-size: 10px;
+  letter-spacing: 3px;
 }
 .hero-avatar {
   width: 120px; height: 120px;
@@ -752,6 +804,11 @@ section { padding: 40px 0; }
   .about-grid { grid-template-columns: 1fr; }
   .facts-grid { grid-template-columns: 1fr 1fr; }
   .skills-grid { grid-template-columns: repeat(3, 1fr); }
+  .hero-row { flex-direction: column; align-items: center; gap: 12px; }
+  .hero-avatar-wrap { width: 180px; }
+  .hero-text h1 { font-size: 16px; text-align: center; }
+  .hero-text .tagline { font-size: 7px; text-align: center; }
+  .hero-text .divider { text-align: center; }
   nav { padding: 6px 10px; flex-wrap: wrap; gap: 4px; }
   .nav-brand { font-size: 9px; }
   .nav-links a { font-size: 6px; padding: 4px 6px; }
@@ -807,24 +864,24 @@ section { padding: 40px 0; }
       </div>
     </div>
 
-    <!-- Chibi Character Scene (transparent) -->
-    <div class="chibi-section pixel-fade-in">
-      <img src="avatar_transparent.png" alt="Dicha at work" class="chibi-art" loading="eager">
-    </div>
-
-    <!-- Title & Tagline -->
-    <div class="hero-content pixel-fade-in">
-      <h1>Halo, <span class="highlight">Sobat</span>!</h1>
-      <div class="tagline">✦ Developer · Problem Solver · Kadang Kucing ✦</div>
-      <div class="divider">━━ ◆ ━━</div>
-      <div class="hero-intro">
-        <strong>Halo, aku Dicha Putra Arwindra.</strong><br><br>
-        Sehari-hari <strong>ngebug code</strong> di perusahaan perbankan biar aplikasi jalan — kalo gak jalan, ya udah jalanin aja.<br><br>
-        Kata orang <em>"kerja keras"</em>, tapi gue pilih <strong>"kerja sambil bingung"</strong>.<br>
-        Kadang jadi <strong>Tukang kode</strong>, kadang jadi <strong>kode.</strong><br>
-        Tapi tenang aja — gue <strong>keep calm and Ctrl+Z.</strong>
-        <div class="pixel-hr">▸ ▹ ▸ ▹ ▸</div>
-        👇 <em>Scroll ke bawah kalo penasaran — atau gak papa juga sih. :)</em>
+    <!-- Hero Avatar + Title (side by side) -->
+    <div class="hero-row pixel-fade-in">
+      <div class="hero-avatar-wrap">
+        <img src="avatar_transparent.png" alt="Dicha at work" class="hero-chibi" loading="eager">
+      </div>
+      <div class="hero-text">
+        <h1>Halo, <span class="highlight">Sobat</span>!</h1>
+        <div class="tagline">✦ Developer · Problem Solver · Kadang Kucing ✦</div>
+        <div class="divider">━━ ◆ ━━</div>
+        <div class="hero-intro">
+          <strong>Halo, aku Dicha Putra Arwindra.</strong><br><br>
+          Sehari-hari <strong>ngebug code</strong> di perusahaan perbankan biar aplikasi jalan — kalo gak jalan, ya udah jalanin aja.<br><br>
+          Kata orang <em>"kerja keras"</em>, tapi gue pilih <strong>"kerja sambil bingung"</strong>.<br>
+          Kadang jadi <strong>Tukang kode</strong>, kadang jadi <strong>kode.</strong><br>
+          Tapi tenang aja — gue <strong>keep calm and Ctrl+Z.</strong>
+          <div class="pixel-hr">▸ ▹ ▸ ▹ ▸</div>
+          👇 <em>Scroll ke bawah kalo penasaran — atau gak papa juga sih. :)</em>
+        </div>
       </div>
     </div>
 
