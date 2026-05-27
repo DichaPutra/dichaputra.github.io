@@ -508,6 +508,92 @@ nav {
   line-height: 1.4;
 }
 
+/* ──  QUEST CARDS (Career Timeline) ── */
+.quest-card {
+  background: var(--cream);
+  border: var(--pixel-border) solid var(--soil);
+  box-shadow:
+    inset -3px -3px 0 var(--bark),
+    inset 3px 3px 0 var(--parchment),
+    4px 4px 0 var(--shadow);
+  padding: 16px;
+  margin-bottom: 14px;
+  transition: all 0.2s;
+}
+.quest-card:hover {
+  border-color: var(--gold);
+  transform: translate(-1px, -1px);
+}
+.quest-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.quest-icon {
+  font-size: 28px;
+  min-width: 36px;
+  text-align: center;
+  line-height: 1;
+  margin-top: 2px;
+}
+.quest-meta { flex: 1; }
+.quest-meta h3 {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  color: var(--soil);
+  margin-bottom: 4px;
+  letter-spacing: 0.3px;
+  line-height: 1.4;
+}
+.quest-date {
+  font-size: 10px;
+  color: var(--tan);
+  font-family: 'Space Mono', monospace;
+}
+.quest-level {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  color: var(--heart);
+  background: rgba(232,115,74,0.1);
+  border: 1px solid var(--heart);
+  padding: 3px 8px;
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+}
+.quest-body p {
+  font-size: 11px;
+  color: var(--bark);
+  line-height: 1.8;
+  margin-bottom: 6px;
+}
+.quest-body p:last-child { margin-bottom: 0; }
+.quest-body strong { color: var(--soil); }
+.quest-sub {
+  margin-top: 8px;
+  padding: 10px;
+  background: rgba(92,58,30,0.04);
+  border-left: 2px solid var(--gold);
+  border-radius: 0 4px 4px 0;
+}
+.quest-sub p {
+  font-size: 10px;
+  color: var(--bark);
+  line-height: 1.7;
+  margin-bottom: 4px;
+}
+.quest-sub p:last-child { margin-bottom: 0; }
+.quest-sub strong { color: var(--soil); }
+.quest-card .project-tags { margin-top: 10px; }
+.edu-card {
+  border-color: var(--gold);
+}
+.edu-card .quest-level {
+  background: rgba(212,165,106,0.15);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
 /* ──  PROJECTS ── */
 .project-list { margin-bottom: 24px; }
 .project-card {
@@ -696,6 +782,7 @@ section { padding: 40px 0; }
   <div class="nav-links">
     <a href="#tentang">Tentang</a>
     <a href="#skill">Skill</a>
+    <a href="#karir">Karir</a>
     <a href="#karya">Quest</a>
     <a href="#kontak">Kontak</a>
   </div>
@@ -888,10 +975,124 @@ section { padding: 40px 0; }
   </div>
 </section>
 
+<!-- ── CAREER TIMELINE ── -->
+<section id="karir">
+  <div class="container">
+    <div class="section-title"><span class="emoji">🗺️</span> Career Quest Log</div>
+
+    <!-- BRI -->
+    <div class="quest-card">
+      <div class="quest-header">
+        <span class="quest-icon">🏦</span>
+        <div class="quest-meta">
+          <h3>PT Bank Rakyat Indonesia (Persero) Tbk</h3>
+          <div class="quest-date">Jan 2026 — Now · Active Quest</div>
+        </div>
+        <span class="quest-level">Lv.Jr Manager</span>
+      </div>
+      <div class="quest-body">
+        <p><strong>Junior Manager · On-site · Jakarta</strong></p>
+        <p>Naik level setelah lulus dari program trainee. Sekarang ngurus system analysis & design buat BRISPOT Micro. Intinya: bikin blueprint biar tim backend gak bingung mau ngoding apa. Kadang stress, tapi gajian obatnya.</p>
+      </div>
+      <div class="quest-sub">
+        <p><strong>↓ sebelumnya di sini juga:</strong> BRILiaN Future Leader Program IT Trainee (May 2025 — Jan 2026)</p>
+        <p>9 bulan training intensif: 4 bulan belajar core banking (dari tau bunga bank sampe bisa bedain debet kredit), 1 bulan OJT di kantor cabang (ngadepin nasabah beneran — pengalaman paling horror), 4 bulan rotation jadi Backend Engineer (pulang ke habitat asal).</p>
+      </div>
+      <div class="project-tags"><span>System Analysis</span><span>BRI</span><span>Core Banking</span></div>
+    </div>
+
+    <!-- Mitra Integrasi -->
+    <div class="quest-card">
+      <div class="quest-header">
+        <span class="quest-icon">🔌</span>
+        <div class="quest-meta">
+          <h3>Mitra Integrasi Informatika, PT</h3>
+          <div class="quest-date">May 2022 — May 2025 · 3 Year Grind</div>
+        </div>
+        <span class="quest-level">Backend Dev</span>
+      </div>
+      <div class="quest-body">
+        <p><strong>Back End Developer · Contract · On-site · South Jakarta</strong></p>
+        <p>Di-placement ke Brispot APP BRI. Jadi kuli bangunan digital di Mikro Squad — maintain & build service pake PHP & Golang. Kodean produksi tiap hari, debugging tengah malem, ngepush service baru sebelum deadline. Basically tulang punggung backend mikro banking (kalo boleh sombong dikit).</p>
+      </div>
+      <div class="project-tags"><span>PHP</span><span>Golang</span><span>MySQL</span><span>Brispot</span></div>
+    </div>
+
+    <!-- Crowe -->
+    <div class="quest-card">
+      <div class="quest-header">
+        <span class="quest-icon">📊</span>
+        <div class="quest-meta">
+          <h3>Crowe Indonesia</h3>
+          <div class="quest-date">Apr 2021 — May 2022 · 1 Yr Side Quest</div>
+        </div>
+        <span class="quest-level">Programmer</span>
+      </div>
+      <div class="quest-body">
+        <p><strong>Programmer · Contract · On-site · South Jakarta</strong></p>
+        <p>Bikin performance management apps based on KPI & OKR. Full-stack warrior: ngobrol sama user buat ambil requirement, design database, ngoding, testing, sampe deployment. Laravel + MySQL — nama duo yang udah gak asing di telinga para pahlawan backend.</p>
+      </div>
+      <div class="project-tags"><span>Laravel</span><span>MySQL</span><span>KPI</span><span>OKR</span></div>
+    </div>
+
+    <!-- Kuryotech -->
+    <div class="quest-card">
+      <div class="quest-header">
+        <span class="quest-icon">🌐</span>
+        <div class="quest-meta">
+          <h3>PT. Kuryotech Indonesia</h3>
+          <div class="quest-date">Nov 2019 — Apr 2021 · Freelance Arc</div>
+        </div>
+        <span class="quest-level">Web Dev</span>
+      </div>
+      <div class="quest-body">
+        <p><strong>Web Developer · Freelance</strong></p>
+        <p>Freelance web dev — support pengembangan modul ERP project pake Laravel. Mostly backend stuff, kadang frontend kalo lagi butuh aja. Belajar artinya "deadline" dan "revisi client" dalam satu waktu.</p>
+      </div>
+      <div class="project-tags"><span>Laravel</span><span>ERP</span><span>Freelance</span></div>
+    </div>
+
+    <!-- PAKERIN -->
+    <div class="quest-card">
+      <div class="quest-header">
+        <span class="quest-icon">📄</span>
+        <div class="quest-meta">
+          <h3>PT. Pabrik Kertas Indonesia (PAKERIN)</h3>
+          <div class="quest-date">Mar 2017 — Apr 2021 · Origin Story</div>
+        </div>
+        <span class="quest-level">Analyst</span>
+      </div>
+      <div class="quest-body">
+        <p><strong>Performance Management Analyst · Contract · Mojokerto</strong></p>
+        <p>Di sinilah karir dimulai — evaluate system performance, ngasih saran efisiensi, bikin company lebih profitable. Tapi yang paling seru: bikin web app internal (CodeIgniter + MySQL) buat otomatisasi scoring KPI, sistem feedback antar departemen, sampe aplikasi perencanaan improvement. Belajar ngoding beneran dari sini, dan ternyata lebih enak daripada ngurusin KPI orang lain.</p>
+      </div>
+      <div class="project-tags"><span>CodeIgniter</span><span>MySQL</span><span>KPI</span><span>Web App</span></div>
+    </div>
+
+    <!-- Education -->
+    <div class="quest-card edu-card">
+      <div class="quest-header">
+        <span class="quest-icon">🎓</span>
+        <div class="quest-meta">
+          <h3>University of Brawijaya</h3>
+          <div class="quest-date">2012 — 2016 · Character Creation</div>
+        </div>
+        <span class="quest-level">GPA 3.53</span>
+      </div>
+      <div class="quest-body">
+        <p><strong>Bachelor's — Management Information Systems</strong></p>
+        <p>Kuliah di Malang, lulus dengan nilai lumayan (gak cumlaude sih, tapi mendekati). Aktif di Raion Studio — tempat ngumpulnya anak-anak kreatif, banyak ngelar coding bareng sampe pagi. Fondasi dasar buat karir: dari sini belajar kalo ngoding itu bukan cuma logic, tapi juga seni (dan kopi).</p>
+      </div>
+      <div class="project-tags"><span>Sistem Informasi</span><span>UB</span><span>Malang</span><span>Raion Studio</span></div>
+    </div>
+
+  </div>
+</section>
+
 <!-- ── PROJECTS ── -->
 <section id="karya">
   <div class="container">
-    <div class="section-title"><span class="emoji">🏗️</span> Quest Log</div>
+    <div class="section-title"><span class="emoji">🏗️</span> Side Quest</div>
     <div class="project-list">
 
       <div class="project-card">
