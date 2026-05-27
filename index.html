@@ -679,16 +679,14 @@ section { padding: 40px 0; }
     <!-- Video Section -->
     <div class="video-section pixel-fade-in">
       <div class="video-label">▶ Opening Scene</div>
-      <div class="video-frame" id="hero-video">
+      <div class="video-frame has-video" id="hero-video">
         <div class="placeholder-text">
           <div class="play-icon">🎬</div>
           <p>✦ Sapaanku untukmu ✦<br>
           <span style="font-size:7px;color:var(--bark)">Upload videomu — atau biarkan ini sebagai pixel art :)</span></p>
         </div>
-        <video id="greeting-video" controls playsinline preload="metadata">
-          <!-- Masukkan path video di sini. Contoh:
-          <source src="video/greeting.mp4" type="video/mp4">
-          -->
+        <video id="greeting-video" controls playsinline preload="metadata" muted autoplay loop>
+          <source src="greeting.mp4" type="video/mp4">
         </video>
       </div>
     </div>
