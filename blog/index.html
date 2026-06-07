@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Dicha Putra Arwindra</title>
+<meta name="description" content="Blog Dicha Putra Arwindra — pengalaman backend developer di BRI, strategi investasi multi-aset, dan catatan developer. Baca artikel terbaru tentang coding, finance, dan AI.">
+<link rel="canonical" href="https://dichaputra.sbs/blog/">
+<meta property="og:title" content="Blog — Dicha Putra Arwindra">
+<meta property="og:description" content="Blog Dicha Putra Arwindra — pengalaman backend developer di BRI, strategi investasi multi-aset, dan catatan developer.">
+<meta property="og:image" content="https://dichaputra.sbs/og-poster.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="675">
+<meta property="og:url" content="https://dichaputra.sbs/blog/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Blog — Dicha Putra Arwindra">
+<meta name="twitter:description" content="Blog Dicha Putra Arwindra — pengalaman backend developer di BRI, strategi investasi multi-aset, dan catatan developer.">
+<meta name="twitter:image" content="https://dichaputra.sbs/og-poster.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Blog Dicha Putra Arwindra",
+  "description": "Catatan developer, investasi, dan AI agent.",
+  "url": "https://dichaputra.sbs/blog/",
+  "author": {
+    "@type": "Person",
+    "name": "Dicha Putra Arwindra",
+    "url": "https://dichaputra.sbs"
+  }
+}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ──  RESET & BASE ── */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --soil: #5c3a1e;
+  --dark-soil: #3e2510;
+  --bark: #7a5a34;
+  --tan: #b89664;
+  --cream: #f0e2c8;
+  --parchment: #e8d5a3;
+  --grass: #7c9f58;
+  --leaf: #5b8c3e;
+  --forest: #3d6b28;
+  --sky: #8ecae6;
+  --ocean: #5ba4cf;
+  --gold: #d4a56a;
+  --sunset: #c88a4a;
+  --berry: #b85a4a;
+  --heart: #e8734a;
+  --night: #2a1f14;
+  --shadow: rgba(60,37,16,0.2);
+  --pixel-border: 3px;
+}
+
+body {
+  background: var(--cream);
+  background-image:
+    radial-gradient(circle at 20% 30%, var(--parchment) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, var(--parchment) 0%, transparent 40%);
+  font-family: 'Space Mono', monospace;
+  color: var(--soil);
+  line-height: 1.8;
+  image-rendering: pixelated;
+  min-height: 100vh;
+}
+
+body::before, body::after {
+  content: '';
+  position: fixed;
+  width: 64px; height: 64px;
+  pointer-events: none;
+  z-index: 0;
+  image-rendering: pixelated;
+}
+body::before {
+  top: 8px; left: 8px;
+  background:
+    linear-gradient(var(--leaf) 0 0) 0 0/16px 16px,
+    linear-gradient(var(--leaf) 0 0) 0 0/16px 16px;
+  box-shadow:
+    0 0 0 3px var(--leaf),
+    0 48px 0 -16px var(--forest);
+}
+body::after {
+  bottom: 8px; right: 8px;
+  background:
+    linear-gradient(var(--gold) 0 0) 0 0/16px 16px,
+    linear-gradient(var(--gold) 0 0) 0 0/16px 16px;
+  box-shadow:
+    0 0 0 3px var(--gold),
+    -48px 0 0 -16px var(--sunset);
+}
+
+.screen-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 16px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ──  NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  background: var(--dark-soil);
+  border-bottom: var(--pixel-border) solid var(--gold);
+  padding: 8px 16px;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 0 var(--shadow);
+}
+.nav-brand {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 11px;
+  color: var(--gold);
+  text-shadow: 2px 2px 0 var(--soil);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.nav-brand .s { color: var(--heart); }
+.nav-links { display: flex; gap: 4px; }
+.nav-links a {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  color: var(--cream);
+  text-decoration: none;
+  padding: 6px 10px;
+  border: 2px solid transparent;
+  transition: all 0.15s;
+  text-transform: uppercase;
+}
+.nav-links a:hover, .nav-links a.active {
+  background: var(--soil);
+  border-color: var(--gold);
+  color: var(--gold);
+  image-rendering: pixelated;
+}
+
+/* ──  HERO ── */
+.hero {
+  padding-top: 100px;
+  padding-bottom: 20px;
+  position: relative;
+}
+.hero-content {
+  text-align: center;
+  margin-top: 16px;
+}
+.hero-content h1 {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 22px;
+  color: var(--soil);
+  text-shadow: 3px 3px 0 var(--gold);
+  margin-bottom: 8px;
+  letter-spacing: 2px;
+}
+.hero-content h1 .highlight { color: var(--heart); text-shadow: 3px 3px 0 var(--gold); }
+.hero-content .tagline {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  color: var(--leaf);
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+.hero-content .divider {
+  text-align: center;
+  margin: 8px 0;
+  font-size: 10px;
+  color: var(--tan);
+  letter-spacing: 4px;
+}
+.hero-intro {
+  background: var(--cream);
+  border: var(--pixel-border) solid var(--soil);
+  box-shadow:
+    inset -3px -3px 0 var(--bark),
+    inset 3px 3px 0 var(--parchment),
+    4px 4px 0 var(--shadow);
+  padding: 16px;
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 11px;
+  color: var(--soil);
+  line-height: 1.8;
+  text-align: left;
+}
+.hero-intro strong { color: var(--heart); }
+
+/* ──  SECTION TITLE ── */
+.section-title {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 12px;
+  color: var(--gold);
+  text-shadow: 2px 2px 0 var(--soil);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  letter-spacing: 1px;
+}
+.section-title::before, .section-title::after {
+  content: '';
+  flex: 1;
+  height: 4px;
+  background: repeating-linear-gradient(
+    90deg, var(--gold) 0, var(--gold) 6px, transparent 6px, transparent 10px
+  );
+}
+.section-title .emoji { font-size: 16px; filter: none; }
+
+/* ──  QUEST CARDS (Blog posts) ── */
+.quest-card {
+  background: var(--cream);
+  border: var(--pixel-border) solid var(--soil);
+  box-shadow:
+    inset -3px -3px 0 var(--bark),
+    inset 3px 3px 0 var(--parchment),
+    4px 4px 0 var(--shadow);
+  padding: 16px;
+  margin-bottom: 14px;
+  transition: all 0.2s;
+}
+.quest-card:hover {
+  border-color: var(--gold);
+  transform: translate(-1px, -1px);
+}
+.quest-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.quest-icon {
+  font-size: 28px;
+  min-width: 36px;
+  text-align: center;
+  line-height: 1;
+  margin-top: 2px;
+}
+.quest-meta { flex: 1; }
+.quest-meta h3 {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  color: var(--soil);
+  margin-bottom: 4px;
+  letter-spacing: 0.3px;
+  line-height: 1.4;
+}
+.quest-meta h3 a {
+  color: var(--soil);
+  text-decoration: none;
+}
+.quest-meta h3 a:hover {
+  color: var(--heart);
+}
+.quest-date {
+  font-size: 10px;
+  color: var(--tan);
+  font-family: 'Space Mono', monospace;
+}
+.quest-level {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  color: var(--heart);
+  background: rgba(232,115,74,0.1);
+  border: 1px solid var(--heart);
+  padding: 3px 8px;
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+}
+.quest-body p {
+  font-size: 11px;
+  color: var(--bark);
+  line-height: 1.8;
+  margin-bottom: 6px;
+}
+.quest-body p:last-child { margin-bottom: 0; }
+.quest-body strong { color: var(--soil); }
+.project-tags {
+  display: flex;
+  gap: 4px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+.project-tags span {
+  font-size: 7px;
+  font-family: 'Press Start 2P', monospace;
+  padding: 3px 8px;
+  background: var(--forest);
+  color: var(--cream);
+  border: 1px solid var(--leaf);
+  text-transform: uppercase;
+}
+.read-more {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 9px;
+  font-family: 'Press Start 2P', monospace;
+  color: var(--leaf);
+  text-decoration: none;
+  border: 1px solid var(--leaf);
+  padding: 4px 10px;
+  transition: all 0.2s;
+}
+.read-more:hover {
+  background: var(--forest);
+  color: var(--cream);
+}
+
+/* ──  FOOTER ── */
+footer {
+  text-align: center;
+  padding: 32px 16px 48px;
+  border-top: var(--pixel-border) solid var(--gold);
+  margin-top: 24px;
+  position: relative;
+}
+footer::before {
+  content: '✦ ✦ ✦';
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--cream);
+  padding: 0 16px;
+  font-size: 10px;
+  color: var(--gold);
+  letter-spacing: 6px;
+}
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: var(--cream);
+  border: 2px solid var(--soil);
+  box-shadow: 3px 3px 0 var(--shadow);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.social-links a:hover {
+  background: var(--gold);
+  border-color: var(--soil);
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 var(--shadow);
+}
+.social-links a:hover .soc-icon { filter: brightness(0) invert(1); }
+.soc-icon { width: 22px; height: 22px; display: block; }
+footer .footer-text {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  color: var(--tan);
+  line-height: 2;
+  margin-top: 12px;
+}
+footer .footer-text .love { color: var(--heart); }
+
+/* ──  ANIMATIONS ── */
+.pixel-fade-in { animation: pixelFadeIn 0.6s ease-out; }
+@keyframes pixelFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ──  LOADING BAR ── */
+.loading-bar {
+  position: fixed;
+  top: 38px; left: 0; right: 0;
+  height: 3px;
+  background: var(--parchment);
+  z-index: 99;
+  overflow: hidden;
+}
+.loading-bar::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -40%;
+  width: 40%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    90deg, var(--leaf), var(--gold), var(--heart), var(--ocean)
+  );
+  animation: loadingScan 2s ease-in-out infinite;
+}
+@keyframes loadingScan {
+  0% { left: -40%; }
+  100% { left: 100%; }
+}
+
+/* ──  BLOG POST EXTRAS ── */
+.blog-post-content {
+  background: var(--cream);
+  border: var(--pixel-border) solid var(--soil);
+  box-shadow:
+    inset -3px -3px 0 var(--bark),
+    inset 3px 3px 0 var(--parchment),
+    4px 4px 0 var(--shadow);
+  padding: 24px;
+  font-size: 12px;
+  color: var(--bark);
+  line-height: 2;
+}
+.blog-post-content h2 {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  color: var(--soil);
+  margin: 24px 0 12px;
+  letter-spacing: 0.5px;
+}
+.blog-post-content h3 {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  color: var(--soil);
+  margin: 20px 0 10px;
+}
+.blog-post-content p { margin-bottom: 12px; }
+.blog-post-content strong { color: var(--soil); }
+.blog-post-content em { color: var(--leaf); font-style: normal; }
+.blog-post-content ul { margin: 8px 0 12px 20px; }
+.blog-post-content ul li { margin-bottom: 6px; }
+.blog-post-content a {
+  color: var(--ocean);
+  text-decoration: underline;
+}
+.blog-post-content .pixel-hr {
+  text-align: center;
+  margin: 16px 0;
+  color: var(--tan);
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+.post-meta {
+  font-size: 9px;
+  color: var(--tan);
+  font-family: 'Press Start 2P', monospace;
+  text-align: center;
+  margin-bottom: 20px;
+  line-height: 1.8;
+}
+.back-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  color: var(--leaf);
+  text-decoration: none;
+  border: 1px solid var(--leaf);
+  padding: 4px 10px;
+  transition: all 0.2s;
+}
+.back-link:hover {
+  background: var(--forest);
+  color: var(--cream);
+}
+
+/* ──  RESPONSIVE ── */
+@media (max-width: 640px) {
+  .hero-content h1 { font-size: 16px; }
+  nav { padding: 6px 10px; flex-wrap: wrap; gap: 4px; }
+  .nav-brand { font-size: 9px; }
+  .nav-links a { font-size: 8px; padding: 4px 8px; }
+  .hero h1 { font-size: 16px; }
+  .hero .tagline { font-size: 8px; }
+  .quest-meta h3 { font-size: 9px; }
+  .section-title { font-size: 10px; }
+  .social-links a { width: 38px; height: 38px; }
+  .blog-post-content { padding: 16px; font-size: 11px; }
+}
+</style>
+</head>
+<body>
+
+<div class="screen-overlay"></div>
+<div class="loading-bar"></div>
+
+<nav>
+  <div class="nav-brand">✦ SOBAT<span class="s">S</span></div>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/blog" class="active">Blog</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-content pixel-fade-in">
+      <h1>✦ <span class="highlight">Blog</span></h1>
+      <div class="tagline">Catatan Developer · Investasi · AI Agent</div>
+      <div class="divider">━━ ◆ ━━</div>
+      <div class="hero-intro">
+        <strong>Catatan perjalanan developer.</strong><br><br>
+        Kadang serius, kadang santai. Artikel tentang programming, investasi, AI agent, dan hal random lainnya yang terjadi di hidup developer perbankan.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-title"><span class="emoji">📜</span> Artikel Terbaru</div>
+
+    <!-- Post 1 -->
+    <div class="quest-card">
+      <div class="quest-header">
+        <span class="quest-icon">🏦</span>
+        <div class="quest-meta">
+          <h3><a href="/blog/pengalaman-bri-backend-dev.html">Pengalaman Jadi Backend Developer di BRI</a></h3>
+          <div class="quest-date">May 2026 · 4 min read</div>
+        </div>
+        <span class="quest-level">Catatan Karir</span>
+      </div>
+      <div class="quest-body">
+        <p>Dari trainee sampe jadi Junior Manager System Analyst — gimana rasanya ngurus microservice banking di Brispot BRI. Mulai dari debugging log produksi, code review, sampe ngobrol sama PIC kalo error ternyata dari downstream.</p>
+      </div>
+      <div class="project-tags"><span>BRI</span><span>Backend</span><span>PHP</span><span>Golang</span></div>
+      <a href="/blog/pengalaman-bri-backend-dev.html" class="read-more">▸ Baca</a>
+    </div>
+
+    <!-- Post 2 -->
+    <div class="quest-card">
+      <div class="quest-header">
+        <span class="quest-icon">📈</span>
+        <div class="quest-meta">
+          <h3><a href="/blog/portfolio-investasi-multi-aset.html">Portfolio Investasi Multi-Aset Ala Developer</a></h3>
+          <div class="quest-date">June 2026 · 3 min read</div>
+        </div>
+        <span class="quest-level">Finance</span>
+      </div>
+      <div class="quest-body">
+        <p>Strategi alokasi aset: 50% saham IDX, 35% fixed income, 10% money market, 5% crypto. Lengkap dengan porto.dichaputra.sbs — dashboard portfolio real-time pake Yahoo Finance MCP tools.</p>
+      </div>
+      <div class="project-tags"><span>Investasi</span><span>Saham</span><span>Crypto</span><span>Reksadana</span></div>
+      <a href="/blog/portfolio-investasi-multi-aset.html" class="read-more">▸ Baca</a>
+    </div>
+
+  </div>
+</section>
+
+<footer id="kontak">
+  <div class="container">
+    <div class="section-title" style="justify-content:center"><span class="emoji">📬</span> Cari Aku</div>
+    <div class="social-links">
+      <a href="https://github.com/DichaPutra" title="GitHub" target="_blank" rel="noopener"><img src="/social/gh.svg" alt="GitHub" class="soc-icon"></a>
+      <a href="https://id.linkedin.com/in/dichaputra" title="LinkedIn" target="_blank" rel="noopener"><img src="/social/li.svg" alt="LinkedIn" class="soc-icon"></a>
+      <a href="https://www.instagram.com/dichaputra/" title="Instagram" target="_blank" rel="noopener"><img src="/social/ig.svg" alt="Instagram" class="soc-icon"></a>
+      <a href="mailto:arwindra23@gmail.com" title="Email"><img src="/social/gm.svg" alt="Email" class="soc-icon"></a>
+    </div>
+    <div class="footer-text">
+      🏠 dichaputra.sbs — SobatS © 2026<br>
+      <span class="love">❤</span> Made with Ctrl+Z <span class="love">❤</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
