@@ -167,7 +167,6 @@ nav {
   background: var(--soil);
   border-color: var(--gold);
   color: var(--gold);
-  image-rendering: pixelated;
 }
 
 /* ──  PIXEL BOX (reusable) ── */
@@ -298,7 +297,7 @@ nav {
   font-family: 'Press Start 2P', monospace;
   font-size: 9px;
   color: var(--leaf);
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   letter-spacing: 1px;
 }
 .hero-content .divider {
@@ -308,28 +307,7 @@ nav {
   color: var(--tan);
   letter-spacing: 4px;
 }
-.hero-intro {
-  background: var(--cream);
-  border: var(--pixel-border) solid var(--soil);
-  box-shadow:
-    inset -3px -3px 0 var(--bark),
-    inset 3px 3px 0 var(--parchment),
-    4px 4px 0 var(--shadow);
-  padding: 16px;
-  font-size: 11px;
-  color: var(--soil);
-  line-height: 1.8;
-  text-align: left;
-}
-.hero-intro strong { color: var(--heart); }
-.hero-intro em { color: var(--leaf); font-style: normal; }
-.hero-intro .pixel-hr {
-  text-align: center;
-  margin: 8px 0;
-  color: var(--tan);
-  font-size: 10px;
-  letter-spacing: 3px;
-}
+
 .hero-avatar {
   width: 120px; height: 120px;
   margin: 0 auto 16px;
@@ -369,22 +347,7 @@ nav {
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.5; transform: scale(0.8); }
 }
-.hero h1 {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 22px;
-  color: var(--soil);
-  text-shadow: 3px 3px 0 var(--gold);
-  margin-bottom: 8px;
-  letter-spacing: 2px;
-}
-.hero h1 .highlight { color: var(--heart); text-shadow: 3px 3px 0 var(--gold); }
-.hero .tagline {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 9px;
-  color: var(--leaf);
-  margin-bottom: 12px;
-  letter-spacing: 1px;
-}
+
 .hero .divider {
   display: flex;
   justify-content: center;
@@ -843,9 +806,8 @@ section { padding: 40px 0; }
   .hero-content h1 { font-size: 16px; }
   nav { padding: 6px 10px; flex-wrap: wrap; gap: 4px; }
   .nav-brand { font-size: 9px; }
-  .nav-links a { font-size: 8px; padding: 4px 8px; }
-  .hero h1 { font-size: 16px; }
-  .hero .tagline { font-size: 8px; }
+  .nav-links a { font-size: 7px; padding: 4px 8px; }
+  .hero-content .tagline { font-size: 8px; }
   .hero-intro { font-size: 11px; }
   .skill-card .skill-name { font-size: 8px; }
   .project-card .proj-info h3 { font-size: 9px; }
@@ -891,13 +853,13 @@ section { padding: 40px 0; }
     <!-- Video Section -->
     <div class="video-section pixel-fade-in">
       <div class="video-label">▶ Opening Scene</div>
-      <div class="video-frame has-video" id="hero-video">
+      <div class="video-frame" id="hero-video">
         <div class="placeholder-text">
           <div class="play-icon">🎬</div>
           <p>✦ Sapaanku untukmu ✦<br>
           <span style="font-size:7px;color:var(--bark)">Upload videomu — atau biarkan ini sebagai pixel art :)</span></p>
         </div>
-        <video id="greeting-video" controls playsinline preload="metadata" poster="og-poster.jpg">
+        <video id="greeting-video" controls playsinline preload="metadata" poster="og-poster.jpg" onloadedmetadata="document.getElementById('hero-video').classList.add('has-video')">
           <source src="greeting.mp4" type="video/mp4">
         </video>
       </div>
