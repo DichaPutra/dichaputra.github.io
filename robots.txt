@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://dichaputra.sbs/sitemap.xml
+Sitemap: https://dichaputra.my.id/sitemap.xml
