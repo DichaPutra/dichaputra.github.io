@@ -831,6 +831,66 @@ section { padding: 40px 0; }
 @media (prefers-reduced-motion:reduce){.profile-card:not([hidden]){animation:none}}
 .profile-toggle{background:none;border:none;padding:0;font:inherit;color:var(--gold);text-decoration:underline;cursor:pointer}
 .profile-toggle:hover{color:#fff}
+/* ── PELIHARAAN KUCING (pojok kanan bawah) ── */
+#catWrap{position:fixed;right:14px;bottom:10px;z-index:9999;pointer-events:none;user-select:none}
+#catMover{pointer-events:auto;cursor:pointer;transition:transform .8s ease;will-change:transform}
+#catWrap.walking #catMover{animation:catLap 10s linear infinite;transition:none}
+#catWrap.jumping #catMover{animation:catJump .5s ease}
+#catWrap.walking #catBounce{animation:catBob .45s ease-in-out infinite alternate}
+#catWrap.walking .cat-leg{animation:catLeg .45s ease-in-out infinite alternate}
+#catWrap.sit .cat-eye{animation:catBlink 4.5s infinite}
+#catWrap.sleeping .cat-body{animation:catBreath 3s ease-in-out infinite}
+#catWrap.sleeping .cat-tail{animation-duration:6s}
+@keyframes catLap{0%{transform:translateX(0)}45%{transform:translateX(calc(-1 * min(28vw, 340px)))}60%{transform:translateX(calc(-1 * min(28vw, 340px)))}100%{transform:translateX(0)}}
+@keyframes catJump{0%{transform:translateY(0)}35%{transform:translateY(-36px)}70%{transform:translateY(-10px)}100%{transform:translateY(0)}}
+@keyframes catBob{from{transform:translateY(0)}to{transform:translateY(-3px)}}
+@keyframes catLeg{from{transform:translateY(0)}to{transform:translateY(3px)}}
+@keyframes catBlink{0%,90%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
+@keyframes catBreath{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.04)}}
+.cat{position:relative;width:76px;height:88px}
+.cat-head{position:absolute;top:0;left:10px;width:56px;height:44px;background:var(--sunset);border:var(--pixel-border) solid var(--soil);border-radius:55% 55% 46% 46%;z-index:2}
+.cat-ear{position:absolute;top:-15px;width:0;height:0;border-left:13px solid transparent;border-right:13px solid transparent;border-bottom:21px solid var(--sunset);filter:drop-shadow(2px 0 0 var(--soil)) drop-shadow(0 2px 0 var(--soil));z-index:1}
+.cat-ear::after{content:'';position:absolute;top:7px;left:-7px;width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:11px solid #f0b7a4}
+.cat-ear.l{left:3px;transform:rotate(-14deg)}
+.cat-ear.r{right:3px;transform:rotate(14deg)}
+.cat-stripe{position:absolute;top:7px;width:8px;height:4px;background:var(--tan);border-radius:4px;opacity:.85;z-index:3}
+.cat-stripe.s1{left:17px;transform:rotate(-10deg)}
+.cat-stripe.s2{left:30px}
+.cat-stripe.s3{left:43px;transform:rotate(10deg)}
+.cat-eye{position:absolute;top:17px;width:7px;height:9px;background:var(--dark-soil);border-radius:50%;transition:height .25s;z-index:3}
+.cat-eye::after{content:'';position:absolute;top:1px;left:1px;width:2.5px;height:2.5px;background:var(--cream);border-radius:50%}
+.cat-eye.l{left:16px}
+.cat-eye.r{right:16px}
+#catWrap.sleeping .cat-eye{top:21px;width:9px;height:2.5px;border-radius:3px;background:var(--soil)}
+#catWrap.sleeping .cat-eye::after{display:none}
+#catWrap.sleeping .cat-eye.l{left:14px}
+#catWrap.sleeping .cat-eye.r{right:14px}
+.cat-nose{position:absolute;top:27px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:5px solid var(--bark);z-index:3}
+.cat-mouth{position:absolute;top:33px;left:50%;transform:translateX(-50%);width:12px;height:6px;border-bottom:2px solid var(--soil);border-radius:0 0 50% 50%;z-index:3}
+.cat-whisker{position:absolute;top:28px;width:19px;height:1.5px;background:var(--soil);opacity:.75;z-index:3}
+.cat-whisker.l{left:-5px;transform:rotate(-9deg)}
+.cat-whisker.l2{left:-5px;top:33px;transform:rotate(9deg)}
+.cat-whisker.r{right:-5px;transform:rotate(9deg)}
+.cat-whisker.r2{right:-5px;top:33px;transform:rotate(-9deg)}
+.cat-body{position:absolute;top:36px;left:4px;width:68px;height:46px;background:var(--sunset);border:var(--pixel-border) solid var(--soil);border-radius:38% 38% 42% 42%;z-index:1}
+.cat-chest{position:absolute;top:8px;left:50%;transform:translateX(-50%);width:30px;height:22px;background:var(--cream);border-radius:50% 50% 40% 40%;z-index:2}
+.cat-tail{position:absolute;top:58px;left:-19px;width:26px;height:9px;background:var(--sunset);border:var(--pixel-border) solid var(--soil);border-radius:10px;transform-origin:right center;z-index:0;animation:tailSway 3s ease-in-out infinite}
+@keyframes tailSway{0%,100%{transform:rotate(16deg)}50%{transform:rotate(-16deg)}}
+.cat-leg{position:absolute;bottom:0;width:13px;height:14px;background:var(--sunset);border:var(--pixel-border) solid var(--soil);border-radius:7px;z-index:0}
+.cat-leg.fl{left:13px}
+.cat-leg.fr{left:31px}
+.cat-leg.bl{left:49px}
+.cat-leg.br{left:51px}
+.cat-zzz{position:absolute;top:-14px;right:8px;font-family:'Press Start 2P',monospace;font-size:10px;color:var(--soil);opacity:0;pointer-events:none}
+#catWrap.sleeping .cat-zzz{animation:zzzFloat 2.8s ease-in-out infinite}
+#catWrap.sleeping .cat-zzz.z2{animation-delay:.9s}
+#catWrap.sleeping .cat-zzz.z3{animation-delay:1.8s}
+@keyframes zzzFloat{0%{opacity:0;transform:translate(0,0) rotate(0)}20%{opacity:1}100%{opacity:0;transform:translate(8px,-28px) rotate(14deg)}}
+.cat-bubble{position:absolute;right:70px;bottom:64px;background:var(--cream);border:var(--pixel-border) solid var(--soil);border-radius:10px;padding:8px 10px;font-family:'Press Start 2P',monospace;font-size:7px;line-height:1.6;color:var(--dark-soil);box-shadow:3px 3px 0 var(--shadow);opacity:0;transform:scale(.7);transform-origin:bottom right;transition:all .22s ease;pointer-events:none;white-space:nowrap;max-width:230px;z-index:10000}
+.cat-bubble.show{opacity:1;transform:scale(1)}
+.cat-bubble::after{content:'';position:absolute;bottom:-9px;right:14px;width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:10px solid var(--soil)}
+@media (max-width:600px){#catWrap{transform:scale(.72);transform-origin:bottom right}}
+@media print{#catWrap{display:none}}
 </style>
 </head>
 <body>
@@ -1245,6 +1305,77 @@ function toggleProfile(){
   b.innerHTML = open ? 'Tutup profil lengkap ↑' : 'Baca profil lengkapku ↓';
   if (open) { setTimeout(function(){ c.scrollIntoView({behavior:'smooth', block:'nearest'}); }, 80); }
 }
+</script>
+<!-- ── PELIHARAAN KUCING ── -->
+<div id="catWrap" class="sit" aria-hidden="true">
+  <div id="catMover" title="Kucing peliharaan situs — klik aku!">
+    <div id="catBounce">
+      <div class="cat">
+        <div class="cat-ear l"></div>
+        <div class="cat-ear r"></div>
+        <div class="cat-stripe s1"></div>
+        <div class="cat-stripe s2"></div>
+        <div class="cat-stripe s3"></div>
+        <div class="cat-head">
+          <div class="cat-eye l"></div>
+          <div class="cat-eye r"></div>
+          <div class="cat-nose"></div>
+          <div class="cat-mouth"></div>
+          <div class="cat-whisker l"></div>
+          <div class="cat-whisker l2"></div>
+          <div class="cat-whisker r"></div>
+          <div class="cat-whisker r2"></div>
+        </div>
+        <div class="cat-body">
+          <div class="cat-chest"></div>
+        </div>
+        <div class="cat-tail"></div>
+        <div class="cat-leg fl"></div>
+        <div class="cat-leg fr"></div>
+        <div class="cat-leg bl"></div>
+        <div class="cat-leg br"></div>
+      </div>
+    </div>
+  </div>
+  <span class="cat-zzz z1">Z</span>
+  <span class="cat-zzz z2">Z</span>
+  <span class="cat-zzz z3">Z</span>
+  <div class="cat-bubble" id="catBubble"><span id="catBubbleText">meow~</span></div>
+</div>
+<script>
+(function(){
+  var wrap = document.getElementById('catWrap');
+  var bub = document.getElementById('catBubble');
+  var txt = document.getElementById('catBubbleText');
+  var phrases = [
+    'meow~', 'PSSST... ada yang liat aku', 'aku bukan bug, aku fitur 🐾',
+    'nyari apa? aku bantuin?', 'kerja? aku temenin, gapapa', 'Ctrl+Z juga berlaku buat aku',
+    'aku jaga situs ini baik-baik', 'kucing: 1, mouse: 0', 'sekali-kali scroll ke atas dong',
+    'aku kucing, bukan animasi error'
+  ];
+  var phases = [['sit',2200],['walk',9500],['sit',1800],['sleep',6200],['sit',1600]];
+  var timer = null;
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function setState(s){
+    wrap.className = s;
+  }
+  function loop(){
+    var p = phases[0];
+    setState(p[0]);
+    var d = p[1] + (Math.random()*700 - 350);
+    phases.push(phases.shift());
+    timer = setTimeout(loop, d);
+  }
+  wrap.addEventListener('click', function(e){
+    e.stopPropagation();
+    txt.textContent = phrases[Math.floor(Math.random()*phrases.length)];
+    bub.classList.add('show');
+    clearTimeout(timer);
+    setState('jumping');
+    setTimeout(function(){ bub.classList.remove('show'); loop(); }, 1500);
+  });
+  if (reduced) { setState('sit'); } else { loop(); }
+})();
 </script>
 </body>
 </html>
