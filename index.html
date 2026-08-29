@@ -841,6 +841,11 @@ section { padding: 40px 0; }
 #catWrap.sit .cat-eye{animation:catBlink 4.5s infinite}
 #catWrap.sleeping .cat-body{animation:catBreath 3s ease-in-out infinite}
 #catWrap.sleeping .cat-tail{animation-duration:6s}
+#catWrap.scrollwalk #catMover{transition:none}
+#catWrap.scrollwalk #catBounce{animation:catBob .4s ease-in-out infinite alternate}
+#catWrap.scrollwalk .cat-leg{animation:catLeg .4s ease-in-out infinite alternate}
+#catWrap.scrollup #catMover{transition:none}
+#catWrap.scrollup #catBounce{animation:catJump .55s ease}
 @keyframes catLap{0%{transform:translateX(0)}45%{transform:translateX(calc(-1 * min(28vw, 340px)))}60%{transform:translateX(calc(-1 * min(28vw, 340px)))}100%{transform:translateX(0)}}
 @keyframes catJump{0%{transform:translateY(0)}35%{transform:translateY(-36px)}70%{transform:translateY(-10px)}100%{transform:translateY(0)}}
 @keyframes catBob{from{transform:translateY(0)}to{transform:translateY(-3px)}}
@@ -849,10 +854,10 @@ section { padding: 40px 0; }
 @keyframes catBreath{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.04)}}
 .cat{position:relative;width:76px;height:88px}
 .cat-head{position:absolute;top:0;left:10px;width:56px;height:44px;background:var(--sunset);border:var(--pixel-border) solid var(--soil);border-radius:55% 55% 46% 46%;z-index:2}
-.cat-ear{position:absolute;top:-15px;width:0;height:0;border-left:13px solid transparent;border-right:13px solid transparent;border-bottom:21px solid var(--sunset);filter:drop-shadow(2px 0 0 var(--soil)) drop-shadow(0 2px 0 var(--soil));z-index:1}
-.cat-ear::after{content:'';position:absolute;top:7px;left:-7px;width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:11px solid #f0b7a4}
-.cat-ear.l{left:3px;transform:rotate(-14deg)}
-.cat-ear.r{right:3px;transform:rotate(14deg)}
+.cat-ear{position:absolute;top:-12px;width:20px;height:24px;background:var(--sunset);border:var(--pixel-border) solid var(--soil);clip-path:polygon(50% 0%,100% 100%,0% 100%);z-index:1}
+.cat-ear::after{content:'';position:absolute;top:7px;left:50%;transform:translateX(-50%);width:9px;height:12px;background:#f0b7a4;clip-path:polygon(50% 0%,100% 100%,0% 100%)}
+.cat-ear.l{left:10px;transform:rotate(-15deg)}
+.cat-ear.r{right:10px;transform:rotate(15deg)}
 .cat-stripe{position:absolute;top:7px;width:8px;height:4px;background:var(--tan);border-radius:4px;opacity:.85;z-index:3}
 .cat-stripe.s1{left:17px;transform:rotate(-10deg)}
 .cat-stripe.s2{left:30px}
@@ -1374,6 +1379,24 @@ function toggleProfile(){
     setState('jumping');
     setTimeout(function(){ bub.classList.remove('show'); loop(); }, 1500);
   });
+  // Trigger pergerakan berdasarkan scroll
+  var lastY = window.pageYOffset, idleTimer = null;
+  window.addEventListener('scroll', function(){
+    if (reduced) { return; }
+    var y = window.pageYOffset;
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var progress = max > 0 ? Math.min(1, Math.max(0, y / max)) : 0;
+    var dist = progress * (Math.max(window.innerWidth, 320) * 0.9);
+    document.getElementById('catMover').style.transform = 'translateX(' + (-dist) + 'px)';
+    var down = y > lastY; lastY = y;
+    clearTimeout(timer);
+    if (down) { setState('scrollwalk'); } else { setState('scrollup'); }
+    clearTimeout(idleTimer);
+    idleTimer = setTimeout(function(){
+      document.getElementById('catMover').style.transform = '';
+      loop();
+    }, 3000);
+  }, {passive:true});
   if (reduced) { setState('sit'); } else { loop(); }
 })();
 </script>
