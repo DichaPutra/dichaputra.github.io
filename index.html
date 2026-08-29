@@ -824,10 +824,11 @@ section { padding: 40px 0; }
   .facts-grid { grid-template-columns: 1fr; }
   .nav-links a { font-size: 7px; padding: 4px 5px; }
 }
-.profile-collapse{display:none}
-.profile-collapse.open{display:block;animation:profileReveal .45s ease}
+.profile-card{margin:0 0 26px}
+.profile-card[hidden]{display:none}
+.profile-card:not([hidden]){animation:profileReveal .45s ease}
 @keyframes profileReveal{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-@media (prefers-reduced-motion:reduce){.profile-collapse.open{animation:none}}
+@media (prefers-reduced-motion:reduce){.profile-card:not([hidden]){animation:none}}
 .profile-toggle{background:none;border:none;padding:0;font:inherit;color:var(--gold);text-decoration:underline;cursor:pointer}
 .profile-toggle:hover{color:#fff}
 </style>
@@ -881,6 +882,11 @@ section { padding: 40px 0; }
       <h1><span class="highlight">Dicha Putra Arwindra</span> — Halo, Sobat!</h1>
       <div class="tagline">✦ Developer · Problem Solver · Kadang Kucing ✦</div>
       <div class="divider">━━ ◆ ━━</div>
+      <div id="profileCard" class="pixel-box profile-card" aria-hidden="true" hidden>
+        <div class="tagline" style="margin-bottom:12px">◆ PROFIL LENGKAP ◆</div>
+        <p style="margin:0 0 14px">Secara teknis, aku adalah <strong>Backend Developer dan System Analyst</strong> yang bekerja di industri perbankan. Keseharianku berkutat dengan <strong>microservice</strong> berbasis <strong>PHP (Lumen/Laravel)</strong> dan <strong>Golang</strong>, didukung <strong>MySQL</strong>, <strong>Redis</strong>, <strong>Kafka</strong>, serta observability seperti <strong>Grafana</strong> — dari membangun API, menelusuri error dari log produksi sampai akar masalah, hingga merancang blueprint sistem untuk tim pengembang.</p>
+        <p style="margin:0 0 14px">Di luar pekerjaan, aku membangun <strong>asisten AI pribadi (Hermes)</strong> untuk mengotomatisasi pekerjaan digital — debugging, report, sampai manajemen knowledge. Aku juga menekuni dunia investasi multi-aset sebagai bagian dari pengelolaan keuangan pribadi jangka panjang.</p>
+      </div>
       <div class="hero-intro">
         <strong>Halo, aku Dicha Putra Arwindra.</strong><br><br>
         Sehari-hari <strong>ngebug code</strong> biar aplikasi jalan — kalo gak jalan, ya udah jalanin aja.<br><br>
@@ -894,15 +900,6 @@ section { padding: 40px 0; }
 
   </div>
 </section>
-
-<!-- ── FULL PROFILE (collapsed, dibuka via tombol di hero) ── -->
-<div id="profileCollapse" class="profile-collapse" aria-hidden="true">
-  <div class="container" style="padding-top:24px">
-    <div class="tagline">◆ PROFIL LENGKAP ◆</div>
-    <p style="margin:0 0 14px">Secara teknis, aku adalah <strong>Backend Developer dan System Analyst</strong> yang bekerja di industri perbankan. Keseharianku berkutat dengan <strong>microservice</strong> berbasis <strong>PHP (Lumen/Laravel)</strong> dan <strong>Golang</strong>, didukung <strong>MySQL</strong>, <strong>Redis</strong>, <strong>Kafka</strong>, serta observability seperti <strong>Grafana</strong> — dari membangun API, menelusuri error dari log produksi sampai akar masalah, hingga merancang blueprint sistem untuk tim pengembang.</p>
-    <p style="margin:0 0 14px">Di luar pekerjaan, aku membangun <strong>asisten AI pribadi (Hermes)</strong> untuk mengotomatisasi pekerjaan digital — debugging, report, sampai manajemen knowledge. Aku juga menekuni dunia investasi multi-aset sebagai bagian dari pengelolaan keuangan pribadi jangka panjang.</p>
-    <div class="pixel-hr">▸ ▹ ▸ ▹ ▸</div>
-  </div>
 
 <!-- ── HP STATS BAR ── -->
 <section>
@@ -1220,7 +1217,6 @@ section { padding: 40px 0; }
   </div>
 </section>
 
-</div>
 <!-- ── FOOTER ── -->
 <footer id="kontak">
   <div class="container">
@@ -1238,16 +1234,16 @@ section { padding: 40px 0; }
   </div>
 </footer>
 
-<noscript><style>.profile-collapse{display:block}</style></noscript>
+<noscript><style>.profile-card[hidden]{display:block}</style></noscript>
 <script>
 function toggleProfile(){
-  var c=document.getElementById('profileCollapse'), b=document.getElementById('profileToggle');
-  var open=!c.classList.contains('open');
-  c.classList.toggle('open', open);
+  var c=document.getElementById('profileCard'), b=document.getElementById('profileToggle');
+  var open=c.hasAttribute('hidden');
+  if (open) { c.removeAttribute('hidden'); } else { c.setAttribute('hidden',''); }
   c.setAttribute('aria-hidden', String(!open));
   b.setAttribute('aria-expanded', String(open));
   b.innerHTML = open ? 'Tutup profil lengkap ↑' : 'Baca profil lengkapku ↓';
-  if (open) { setTimeout(function(){ c.scrollIntoView({behavior:'smooth', block:'start'}); }, 80); }
+  if (open) { setTimeout(function(){ c.scrollIntoView({behavior:'smooth', block:'nearest'}); }, 80); }
 }
 </script>
 </body>
