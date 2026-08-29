@@ -824,6 +824,12 @@ section { padding: 40px 0; }
   .facts-grid { grid-template-columns: 1fr; }
   .nav-links a { font-size: 7px; padding: 4px 5px; }
 }
+.profile-collapse{display:none}
+.profile-collapse.open{display:block;animation:profileReveal .45s ease}
+@keyframes profileReveal{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.profile-collapse.open{animation:none}}
+.profile-toggle{background:none;border:none;padding:0;font:inherit;color:var(--gold);text-decoration:underline;cursor:pointer}
+.profile-toggle:hover{color:#fff}
 </style>
 </head>
 <body>
@@ -882,18 +888,21 @@ section { padding: 40px 0; }
         Kadang jadi <strong>Tukang kode</strong>, kadang jadi <strong>kode.</strong><br>
         Tapi tenang aja — aku <strong>keep calm and Ctrl+Z.</strong>
         <br><br>
-        Mau kenalan lebih dalam? <a href="/about.html" style="color:var(--gold);text-decoration:underline">Baca profil lengkapku →</a>
-        <br><br>
-        Secara teknis, aku adalah <strong>Backend Developer dan System Analyst</strong> yang bekerja di industri perbankan. Keseharianku berkutat dengan <strong>microservice</strong> berbasis <strong>PHP (Lumen/Laravel)</strong> dan <strong>Golang</strong>, didukung <strong>MySQL</strong>, <strong>Redis</strong>, <strong>Kafka</strong>, serta observability seperti <strong>Grafana</strong> — dari membangun API, menelusuri error dari log produksi sampai akar masalah, hingga merancang blueprint sistem untuk tim pengembang.
-        <br><br>
-        Di luar pekerjaan, aku membangun <strong>asisten AI pribadi (Hermes)</strong> untuk mengotomatisasi pekerjaan digital — debugging, report, sampai manajemen knowledge. Aku juga menekuni dunia investasi multi-aset sebagai bagian dari pengelolaan keuangan pribadi jangka panjang.
-        <div class="pixel-hr">▸ ▹ ▸ ▹ ▸</div>
-        👇 <em>Scroll ke bawah kalo penasaran — atau gak papa juga sih. :)</em>
+        Mau kenalan lebih dalam? <button type="button" class="profile-toggle" id="profileToggle" aria-expanded="false" onclick="toggleProfile()">Baca profil lengkapku ↓</button>
       </div>
     </div>
 
   </div>
 </section>
+
+<!-- ── FULL PROFILE (collapsed, dibuka via tombol di hero) ── -->
+<div id="profileCollapse" class="profile-collapse" aria-hidden="true">
+  <div class="container" style="padding-top:24px">
+    <div class="tagline">◆ PROFIL LENGKAP ◆</div>
+    <p style="margin:0 0 14px">Secara teknis, aku adalah <strong>Backend Developer dan System Analyst</strong> yang bekerja di industri perbankan. Keseharianku berkutat dengan <strong>microservice</strong> berbasis <strong>PHP (Lumen/Laravel)</strong> dan <strong>Golang</strong>, didukung <strong>MySQL</strong>, <strong>Redis</strong>, <strong>Kafka</strong>, serta observability seperti <strong>Grafana</strong> — dari membangun API, menelusuri error dari log produksi sampai akar masalah, hingga merancang blueprint sistem untuk tim pengembang.</p>
+    <p style="margin:0 0 14px">Di luar pekerjaan, aku membangun <strong>asisten AI pribadi (Hermes)</strong> untuk mengotomatisasi pekerjaan digital — debugging, report, sampai manajemen knowledge. Aku juga menekuni dunia investasi multi-aset sebagai bagian dari pengelolaan keuangan pribadi jangka panjang.</p>
+    <div class="pixel-hr">▸ ▹ ▸ ▹ ▸</div>
+  </div>
 
 <!-- ── HP STATS BAR ── -->
 <section>
@@ -1211,6 +1220,7 @@ section { padding: 40px 0; }
   </div>
 </section>
 
+</div>
 <!-- ── FOOTER ── -->
 <footer id="kontak">
   <div class="container">
@@ -1228,5 +1238,17 @@ section { padding: 40px 0; }
   </div>
 </footer>
 
+<noscript><style>.profile-collapse{display:block}</style></noscript>
+<script>
+function toggleProfile(){
+  var c=document.getElementById('profileCollapse'), b=document.getElementById('profileToggle');
+  var open=!c.classList.contains('open');
+  c.classList.toggle('open', open);
+  c.setAttribute('aria-hidden', String(!open));
+  b.setAttribute('aria-expanded', String(open));
+  b.innerHTML = open ? 'Tutup profil lengkap ↑' : 'Baca profil lengkapku ↓';
+  if (open) { setTimeout(function(){ c.scrollIntoView({behavior:'smooth', block:'start'}); }, 80); }
+}
+</script>
 </body>
 </html>
