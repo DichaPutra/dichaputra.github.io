@@ -415,36 +415,36 @@ footer .footer-text .love { color: var(--heart); }
   <div class="container">
     <div class="blog-post-content pixel-fade-in">
 
-      <p>Pernah denger istilah "reasoning model" kayak OpenAI o1, o3, atau DeepSeek R1? Atau bingung bedanya sama model reguler kayak GPT-4o atau Claude Sonnet? Artikel ini bakal jelasin konsepnya dari dasar — tanpa jargon berlebihan.</p>
+      <p>Pernah denger istilah "reasoning model" kayak OpenAI o1, o3, atau DeepSeek R1? Atau bingung bedanya sama model reguler kayak GPT-4o atau Claude Sonnet? Artikel ini bakal jelasin konsepnya dari dasar, tanpa jargon berlebihan.</p>
 
       <div class="pixel-hr">▸ ▹ ▸ ▹ ▸</div>
 
       <h2>Model Reguler vs Reasoning Model</h2>
-      <p>Model reguler itu kayak <strong>kalkulator canggih</strong>: lo kasih input, langsung output. Cepet, efisien, tapi gak "mikir" — dia cuma prediksi token berikutnya berdasarkan pola yang udah dipelajari. Cocok buat tugas yang straightforward: nulis email, translate, summarize.</p>
+      <p>Model reguler itu kayak <strong>kalkulator canggih</strong>: kamu kasih input, langsung output. Cepet, efisien, tapi gak "mikir": dia cuma prediksi token berikutnya berdasarkan pola yang udah dipelajari. Cocok buat tugas yang straightforward: nulis email, translate, summarize.</p>
 
-      <p>Reasoning model beda. Dia punya <strong>proses "berpikir" internal</strong> sebelum ngasih jawaban. Kayak lo ngerjain soal matematika — lo gak langsung nulis jawaban, lo corat-coret dulu di kertas. Reasoning model juga gitu: dia generate chain-of-thought (rangkaian langkah berpikir) sebelum nyampe ke kesimpulan.</p>
+      <p>Reasoning model beda. Dia punya <strong>proses "berpikir" internal</strong> sebelum ngasih jawaban. Kayak kamu ngerjain soal matematika: kamu gak langsung nulis jawaban, kamu corat-coret dulu di kertas. Reasoning model juga gitu: dia generate chain-of-thought (rangkaian langkah berpikir) sebelum nyampe ke kesimpulan.</p>
 
       <h2>Apa Itu Chain-of-Thought?</h2>
       <p>Chain-of-Thought (CoT) adalah teknik ngajarin model buat <em>berpikir langkah demi langkah</em>. Contoh simpel:</p>
 
       <p style="background: rgba(92,58,30,0.05); padding: 12px; border-left: 3px solid var(--leaf);">
         <strong>Pertanyaan:</strong> "Jika 3 apel harganya 15.000, berapa harga 7 apel?"<br><br>
-        <strong>Tanpa CoT (model reguler):</strong> "35.000" — jawaban langsung, beres.<br><br>
-        <strong>Dengan CoT (reasoning model):</strong> "3 apel = 15.000, berarti 1 apel = 15.000/3 = 5.000. Maka 7 apel = 7 × 5.000 = 35.000." — jawaban sama, tapi prosesnya keliatan.
+        <strong>Tanpa CoT (model reguler):</strong> "35.000", jawaban langsung, beres.<br><br>
+        <strong>Dengan CoT (reasoning model):</strong> "3 apel = 15.000, berarti 1 apel = 15.000/3 = 5.000. Maka 7 apel = 7 × 5.000 = 35.000." , jawaban sama, tapi prosesnya keliatan.
       </p>
 
       <p>Yang bikin CoT powerful: dengan "ngomong" langkah demi langkah, model bisa <strong>ngecek konsistensi internal</strong> sebelum ngasih jawaban final. Kalo ada langkah yang salah, dia bisa ketahuan di tengah jalan.</p>
 
       <h2>Test-Time Compute: Rahasia Reasoning Model</h2>
-      <p>Ini konsep paling penting. Model reguler pake compute cuma pas <em>training</em>. Tapi reasoning model pake compute tambahan pas <em>inference</em> (waktu lo pake) — ini yang disebut <strong>test-time compute</strong>.</p>
+      <p>Ini konsep paling penting. Model reguler pake compute cuma pas <em>training</em>. Tapi reasoning model pake compute tambahan pas <em>inference</em> (waktu kamu pake). Ini yang disebut <strong>test-time compute</strong>.</p>
 
-      <p>Bayangin lo lagi ujian. Lo bisa:</p>
+      <p>Bayangin kamu lagi ujian. Kamu bisa:</p>
       <ul>
-        <li><strong>Cepet jawab</strong> — model reguler. Lo baca soal, langsung jawab. Kalo salah, ya salah.</li>
-        <li><strong>Nulis draft, coret-coret, baru jawab</strong> — reasoning model. Lo habiskan waktu dan kertas tambahan, tapi jawaban lebih akurat.</li>
+        <li><strong>Cepet jawab</strong> — model reguler. Kamu baca soal, langsung jawab. Kalo salah, ya salah.</li>
+        <li><strong>Nulis draft, coret-coret, baru jawab</strong> — reasoning model. Kamu habiskan waktu dan kertas tambahan, tapi jawaban lebih akurat.</li>
       </ul>
 
-      <p>Makanya reasoning model lebih lambat dan lebih mahal — mereka <em>sengaja habisin compute</em> buat mikir. Tapi buat tugas kompleks (coding, math, logic), hasilnya jauh lebih bagus.</p>
+      <p>Makanya reasoning model lebih lambat dan lebih mahal, karena <em>sengaja habisin compute</em> buat mikir. Tapi buat tugas kompleks (coding, math, logic), hasilnya jauh lebih bagus.</p>
 
       <h2>Perbandingan Model di 2026</h2>
       <p>Di pertengahan 2026, lanskap model kurang lebih gini:</p>
@@ -459,13 +459,13 @@ footer .footer-text .love { color: var(--heart); }
       <p>Gak semua tugas butuh reasoning. Kuncinya: <strong>match the tool to the task</strong>.</p>
       <ul>
         <li><strong>Pake reasoning model</strong> kalo: debugging code, ngerjain math/logic, analisis kompleks, planning multi-step, code review, arsitektur sistem.</li>
-        <li><strong>Pake model reguler</strong> kalo: nulis email, summarize, nulis文案, brainstorming, terjemahan, Q&A simple.</li>
+        <li><strong>Pake model reguler</strong> kalo: nulis email, summarize, nulis naskah, brainstorming, terjemahan, Q&A simple.</li>
       </ul>
 
-      <p>Banyak orang yang salah pake reasoning model buat tugas simpel — boros token dan delay gak perlu. Filosofi yang bener: <strong>V4 Pro (mandor) buat decision & complex reasoning, V4 Flash (tukang) buat daily driver murah.</strong></p>
+      <p>Banyak orang yang salah pake reasoning model buat tugas simpel: boros token dan delay gak perlu. Filosofi yang bener: <strong>V4 Pro (mandor) buat decision & complex reasoning, V4 Flash (tukang) buat daily driver murah.</strong></p>
 
       <h2>Masa Depan: Adaptive Compute</h2>
-      <p>Trend terbaru di 2026 adalah <strong>adaptive compute</strong> — model yang bisa milih sendiri berapa banyak compute yang dia butuhin buat setiap task. Task simpel: jawab cepet pake sedikit compute. Task complex: habisin compute lebih banyak buat reasoning. Ini ideal: lo gak perlu mikir milih model mana buat task apa — model ngatur sendiri.</p>
+      <p>Tren terbaru di 2026 adalah <strong>adaptive compute</strong>: model yang bisa milih sendiri berapa banyak compute yang dia butuhin buat setiap task. Task simpel: jawab cepet pake sedikit compute. Task complex: habisin compute lebih banyak buat reasoning. Ini ideal: kamu gak perlu mikir milih model mana buat task apa, model ngatur sendiri.</p>
 
       <p>Beberapa model udah mulai implement ini (seperti Gemini 2.5 dengan "thinking mode" dinamis). Di 2027-2028, ini bakal jadi standar.</p>
 
